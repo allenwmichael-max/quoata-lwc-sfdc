@@ -1,0 +1,59 @@
+.summary-bar {
+    display: flex;
+    gap: 24px;
+    padding: 12px 16px;
+    background-color: #f4f6fe;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+}
+
+.summary-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.summary-label {
+    font-size: 11px;
+    color: #706e6b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.summary-value-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.summary-value {
+    font-size: 22px;
+    font-weight: 600;
+    color: #032d60;
+}
+
+.summary-value-projected {
+    color: #2e844a;
+}
+
+.summary-value-positive {
+    color: #2e844a;
+}
+
+.summary-value-warning {
+    color: #c9372c;
+}
+
+.summary-arrow {
+    font-size: 14px;
+    color: #2e844a;
+    font-weight: 600;
+}
+
+.summary-label-inline {
+    font-size: 12px;
+    color: #706e6b;
+}
+

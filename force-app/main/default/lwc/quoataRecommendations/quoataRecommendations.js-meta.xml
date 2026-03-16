@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__HomePage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__HomePage,lightning__AppPage">
+            <property name="maxRecommendations" type="Integer" default="10" label="Max Recommendations to Display" description="Maximum number of recommendations to show"/>
+            <property name="autoRefreshMinutes" type="Integer" default="15" label="Auto Refresh (minutes)" description="How often to refresh recommendations. Set 0 to disable."/>
+        </targetConfig>
+    </targetConfigs>
+    <masterLabel>Quoata Territory Recommendations</masterLabel>
+    <description>Displays Quoata territory optimization recommendations with accept/reject/snooze actions.</description>
+</LightningComponentBundle>
+

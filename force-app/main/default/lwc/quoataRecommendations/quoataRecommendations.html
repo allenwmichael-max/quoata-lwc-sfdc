@@ -1,0 +1,103 @@
+<template>
+    <!-- Loading State -->
+    <template if:true={isLoading}>
+        <lightning-card title="Quoata territory recommendations">
+            <div class="slds-p-around_medium">
+                <lightning-spinner alternative-text="Loading recommendations" size="medium"></lightning-spinner>
+                <p class="slds-text-align_center slds-m-top_medium slds-text-color_weak">
+                    Loading territory recommendations...
+                </p>
+            </div>
+        </lightning-card>
+    </template>
+
+    <!-- Error State -->
+    <template if:true={error}>
+        <lightning-card title="Quoata territory recommendations">
+            <div class="slds-p-around_medium">
+                <div class="slds-illustration slds-illustration_small">
+                    <p class="slds-text-color_error slds-text-align_center">{error}</p>
+                    <div class="slds-text-align_center slds-m-top_small">
+                        <lightning-button label="Retry" onclick={handleRefresh} variant="brand"></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+
+    <!-- Empty State -->
+    <template if:true={isEmpty}>
+        <lightning-card title="Quoata territory recommendations" icon-name="custom:custom63">
+            <div class="slds-p-around_large slds-text-align_center">
+                <p class="slds-text-heading_small slds-m-bottom_x-small">Territories are looking good</p>
+                <p class="slds-text-color_weak">No pending recommendations right now. We'll notify you when new optimizations are available.</p>
+            </div>
+        </lightning-card>
+    </template>
+
+    <!-- Main Content -->
+    <template if:false={isLoading}>
+        <template if:false={error}>
+            <template if:false={isEmpty}>
+                <lightning-card>
+                    <!-- Custom Header -->
+                    <div slot="title" class="header-container">
+                        <div class="header-left">
+                            <lightning-icon icon-name="custom:custom63" size="small" class="slds-m-right_x-small"></lightning-icon>
+                            <span class="header-title">Quoata territory recommendations</span>
+                            <span class="pending-badge">{pendingCount} pending</span>
+                        </div>
+                        <div class="header-actions">
+                            <lightning-button-group>
+                                <lightning-button
+                                    label="Accept all"
+                                    onclick={handleAcceptAll}
+                                    variant="brand"
+                                    disabled={isProcessing}>
+                                </lightning-button>
+                                <lightning-button
+                                    label="Refresh"
+                                    onclick={handleRefresh}
+                                    icon-name="utility:refresh"
+                                    disabled={isProcessing}>
+                                </lightning-button>
+                            </lightning-button-group>
+                        </div>
+                    </div>
+
+                    <!-- Summary Bar -->
+                    <c-quoata-summary-bar
+                        current-balance={summaryData.currentBalance}
+                        projected-balance={summaryData.projectedBalance}
+                        pipeline-impact={summaryData.pipelineImpact}
+                        unassigned-count={summaryData.unassignedCount}>
+                    </c-quoata-summary-bar>
+
+                    <!-- Recommendation Cards -->
+                    <div class="recommendations-list">
+                        <template for:each={recommendations} for:item="rec">
+                            <c-quoata-recommendation-card
+                                key={rec.id}
+                                recommendation={rec}
+                                onaccept={handleAccept}
+                                onreject={handleReject}
+                                onsnooze={handleSnooze}
+                                is-processing={isProcessing}>
+                            </c-quoata-recommendation-card>
+                        </template>
+                    </div>
+
+                    <!-- Footer -->
+                    <template if:true={hasMore}>
+                        <div class="slds-text-align_center slds-p-around_small footer-link">
+                            <a href={quoataAppUrl} target="_blank">
+                                View all {totalCount} recommendations →
+                            </a>
+                        </div>
+                    </template>
+                </lightning-card>
+            </template>
+        </template>
+    </template>
+</template>
+

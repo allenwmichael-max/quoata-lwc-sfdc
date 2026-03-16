@@ -1,0 +1,22 @@
+<template>
+    <div class="summary-bar">
+        <div class="summary-item">
+            <span class="summary-label">Territory balance</span>
+            <div class="summary-value-row">
+                <span class="summary-value">{currentBalance}%</span>
+                <span class="summary-arrow">→</span>
+                <span class="summary-value summary-value-projected">{projectedBalance}%</span>
+                <span class="summary-label-inline">after changes</span>
+            </div>
+        </div>
+        <div class="summary-item">
+            <span class="summary-label">Estimated pipeline impact</span>
+            <span class="summary-value summary-value-positive">{formattedPipelineImpact}</span>
+        </div>
+        <div class="summary-item">
+            <span class="summary-label">Unassigned high-fit accounts</span>
+            <span class="summary-value summary-value-warning">{unassignedCount}</span>
+        </div>
+    </div>
+</template>
+

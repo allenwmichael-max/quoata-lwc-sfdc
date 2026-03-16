@@ -1,0 +1,17 @@
+{
+  "orgName": "Quoata Dev",
+  "edition": "Enterprise",
+  "features": [
+    "AuthorApex",
+    "ServiceCloud"
+  ],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    }
+  }
+}
+

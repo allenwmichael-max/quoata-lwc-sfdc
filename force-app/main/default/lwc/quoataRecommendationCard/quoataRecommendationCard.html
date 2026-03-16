@@ -1,0 +1,42 @@
+<template>
+    <div class="card-container">
+        <div class={typeIndicatorClass}></div>
+        <div class="card-content">
+            <div class="card-badges">
+                <span class={typeBadgeClass}>{recommendation.typeLabel}</span>
+                <span class={icpBadgeClass}>ICP: {recommendation.icpScore}</span>
+            </div>
+            <div class="card-account-name">
+                <a href={accountUrl} target="_blank">{recommendation.accountName}</a>
+            </div>
+            <div class="card-details">
+                {recommendation.detailLine}
+            </div>
+            <div class="card-reasoning">
+                <span class="reasoning-label">Recommended: </span>
+                {recommendation.reasoning}
+            </div>
+        </div>
+        <div class="card-actions">
+            <lightning-button
+                label="Accept"
+                variant="brand"
+                onclick={handleAccept}
+                disabled={isProcessing}>
+            </lightning-button>
+            <lightning-button
+                label="Reject"
+                variant="neutral"
+                onclick={handleReject}
+                disabled={isProcessing}>
+            </lightning-button>
+            <lightning-button
+                label="Snooze"
+                variant="neutral"
+                onclick={handleSnooze}
+                disabled={isProcessing}>
+            </lightning-button>
+        </div>
+    </div>
+</template>
+
